@@ -1,0 +1,342 @@
+/* Cerpent Cipher Project - Teal and Orange Sunset Theme */
+
+:root {
+    /* Define a new color palette */
+    --color-primary: #008080; /* Teal */
+    --color-primary-dark: #005f5f; /* Dark Teal */
+    --color-secondary: #e0ffff; /* Light Cyan */
+
+    --color-header-bg: #2c3e50; /* Dark Blue-Grey for header */
+    --color-header-text: #FF8C00; /* Dark Orange text for header */
+    --color-header-link-hover: #FFA07A; /* Light Salmon for hover */
+
+    --color-accent: #FF8C00; /* Dark Orange for result box */
+
+    --color-text-dark: #333; /* Dark grey for main text */
+    --color-text-light: #555; /* Slightly lighter grey for labels/hints */
+    --color-background-light: #ffffff; /* Clean white background */
+    --color-background-gradient: linear-gradient(135deg, #ffffff, #e0ffff); /* White to Light Cyan gradient */
+    --color-border: #b2dfdb; /* Light Teal border */
+
+    /* Standard Bootstrap semantic colors - can keep or adjust */
+    --color-success: #28a745; /* Standard green */
+    --color-danger: #dc3545; /* Standard red */
+    --color-info: #17a2b8; /* Standard info blue */
+}
+
+
+body {
+    background: var(--color-background-gradient);
+    font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--color-text-dark);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+/* Navbar - Styled as the main header */
+.navbar {
+    background-color: var(--color-header-bg); /* Use the dark blue-grey header background color */
+    padding: 10px 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    border-bottom: none; /* Removed any previous border */
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--color-header-text) !important; /* Use Dark Orange text color */
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: color 0.3s ease;
+}
+.navbar-brand:hover {
+     color: var(--color-header-link-hover) !important; /* Light Salmon on hover */
+}
+
+.navbar-nav .nav-link {
+    color: var(--color-header-text) !important; /* Use Dark Orange text color for links */
+    margin-left: 15px;
+    transition: color 0.3s ease;
+    font-weight: 400;
+    padding-right: 0; /* Adjust padding if needed */
+    padding-left: 0; /* Adjust padding if needed */
+     border-bottom: 2px solid transparent; /* Add a subtle hover effect base */
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--color-header-link-hover) !important; /* Light Salmon on hover */
+    text-decoration: none; /* Remove underline on hover */
+     border-bottom-color: var(--color-primary); /* Highlight with Teal on hover */
+}
+
+/* Active link style (optional) */
+.navbar-nav .nav-item.active .nav-link {
+     border-bottom-color: var(--color-primary); /* Highlight with Teal */
+     color: var(--color-header-link-hover) !important;
+}
+
+
+.container {
+    flex-grow: 1;
+    background-color: var(--color-background-light);
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 960px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Headings (inside the container) */
+.main-heading {
+    color: var(--color-primary-dark); /* Dark Teal */
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: none;
+}
+
+.section-heading {
+    color: var(--color-primary); /* Teal */
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.heading-container {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+
+/* Result Box - Styled with Accent Color (Dark Orange) */
+.result-box {
+    background-color: var(--color-accent); /* Dark Orange background */
+    color: var(--color-text-dark); /* Dark text */
+    padding: 25px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    word-break: break-all;
+    border: 1px solid #cc7000; /* Darker Orange border */
+}
+
+.result-box h2 {
+    color: var(--color-text-dark); /* Dark text for result heading */
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
+
+.result-box p {
+    margin: 0;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+
+/* Bootstrap Button Overrides */
+.btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+   background-color: var(--color-primary); /* Teal */
+   border: none;
+   color: #fff;
+}
+
+.btn-primary:hover {
+   background-color: var(--color-primary-dark); /* Darker Teal */
+   color: #fff;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+   background-color: #f8f9fa; /* Very light grey */
+   border: 1px solid var(--color-border);
+   color: var(--color-text-dark);
+}
+
+.btn-secondary:hover {
+   background-color: #e9ecef; /* Slightly darker grey */
+   border-color: #adb5bd;
+   color: var(--color-text-dark);
+}
+
+.btn-outline-primary {
+    color: var(--color-primary); /* Teal */
+    border-color: var(--color-primary); /* Teal */
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: var(--color-primary); /* Teal */
+    border-color: var(--color-primary); /* Teal */
+}
+
+
+/* Alert Overrides */
+.alert {
+    border-radius: 8px;
+    padding: 15px 20px;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+/* Info alert using secondary color */
+.alert-info {
+  background-color: var(--color-secondary); /* Light Cyan */
+  border: 1px solid var(--color-primary); /* Teal border */
+  color: var(--color-text-dark); /* Dark text */
+}
+
+.alert-info strong {
+    color: var(--color-primary-dark); /* Dark Teal for strong text */
+}
+
+.alert-info ul {
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+.alert-info li {
+    margin-bottom: 5px;
+}
+
+/* Success and Danger alerts (using standard colors) */
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.1); /* Light green background */
+    border-color: var(--color-success);
+    color: var(--color-success);
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.1); /* Light red background */
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+
+/* Form Group adjustments */
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    font-weight: 500;
+    color: var(--color-text-light);
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid var(--color-border);
+    padding: 12px 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-dark);
+    background-color: var(--color-background-light);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary); /* Teal glow */
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 128, 128, 0.25); /* Use Teal for glow */
+}
+
+textarea.form-control {
+    min-height: 120px;
+}
+
+/* Adjustments for elements within the Key Info block */
+#keyInfo .btn-sm {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+#keyInfo span {
+    font-family: 'Courier New', Courier, monospace;
+    word-break: break-all;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    color: var(--color-text-dark);
+    background-color: #f1f1f1;
+    padding: 5px 8px;
+    border-radius: 4px;
+    border: 1px dashed #ccc;
+}
+
+/* Footer styling */
+footer {
+    margin-top: auto;
+    background-color: var(--color-primary-dark); /* Dark Teal footer */
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+     .navbar-brand {
+        font-size: 1.6rem;
+    }
+    .main-heading {
+        font-size: 2.2rem;
+    }
+    .section-heading {
+        font-size: 1.6rem;
+    }
+    .container {
+        margin: 20px auto;
+        padding: 25px;
+    }
+    .result-box {
+        font-size: 1rem;
+        padding: 20px;
+    }
+    .result-box h2 {
+        font-size: 1.3rem;
+    }
+    .btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+    label {
+        margin-bottom: 5px;
+    }
+     .form-group {
+        margin-bottom: 20px;
+    }
+    #keyInfo span {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

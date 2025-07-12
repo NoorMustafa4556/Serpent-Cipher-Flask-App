@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="main-heading">Welcome to Cerpent Cipher</h1>
+<h2 class="section-heading">Secure Your Messages</h2>
+
+<div class="alert alert-info text-center">
+    This application allows you to encrypt and decrypt messages using the custom Cerpent Cipher algorithm. Use the navigation bar above to access the Encryption and Decryption tools.
+</div>
+
+{# Removed the row containing the two link cards as requested #}
+{#
+<div class="row justify-content-center">
+    <div class="col-md-6 mb-4">
+        <div class="card text-center h-100">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Encrypt Message</h5>
+                <p class="card-text">Turn your plaintext into secret ciphertext using a 256-bit key.</p>
+                <a href="{{ url_for('encrypt_page') }}" class="btn btn-primary mt-auto">Go to Encryption</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card text-center h-100">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Decrypt Message</h5>
+                <p class="card-text">Convert ciphertext back into readable plaintext using the original key.</p>
+                <a href="{{ url_for('decrypt_page') }}" class="btn btn-secondary mt-auto">Go to Decryption</a>
+            </div>
+        </div>
+    </div>
+</div>
+#}
+
+<div class="alert alert-secondary mt-4 text-center">
+    A secret key is required for both encryption and decryption. You can generate a new key on the Encryption page.
+</div>
+
+{% endblock %}

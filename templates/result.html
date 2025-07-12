@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="result-box">
+    <h2>Cerpent Cipher {{ operation }} Result</h2>
+    <p>{{ result }}</p>
+</div>
+
+{% if success %}
+    <div class="alert alert-success" role="alert">
+        Operation completed successfully!
+    </div>
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        Error during operation: {{ result }}
+    </div>
+{% endif %}
+
+
+<br>
+<a href="{{ url_for('encrypt_page') }}" class="btn btn-primary">Back to Encrypt</a> {# Use url_for #}
+<a href="{{ url_for('decrypt_page') }}" class="btn btn-secondary ml-2">Go to Decrypt</a> {# Use url_for #}
+{% endblock %}

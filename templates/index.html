@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="main-heading">Cerpent Cipher</h1>
+<h2 class="section-heading">Encryption Tool</h2>
+
+<div class="alert alert-info">
+    <strong>Unique Features:</strong>
+    <ul>
+        <li>Our Cerpent Cipher employs a custom block transformation that XORs each byte with a key byte, adds an offset (7), and left rotates by 2 bits.</li>
+        <li>A randomly generated 256-bit secret key (displayed in hex) can be easily generated and copied.</li>
+        <li>Input messages are processed in 16-byte blocks with PKCS#7 padding for handling variable lengths.</li>
+        <li>Ciphertext is presented clearly in the orange result box (after submitting the form).</li>
+        <li>This distinctive approach with a custom cipher and unique visual theme sets our project apart.</li>
+    </ul>
+</div>
+
+<div class="heading-container">
+    <h3>Cerpent Cipher Encryption</h3>
+</div>
+
+<div id="keyInfo" style="display:none;" class="alert alert-info">
+    <p>
+        <strong>Generated Secret Key:</strong>
+        <span id="secretKeyDisplay"></span>
+        <button class="btn btn-sm btn-outline-primary ml-2" onclick="copyText('secretKeyDisplay')">Copy Key</button>
+    </p>
+</div>
+
+<form method="POST" action="{{ url_for('encrypt_page') }}"> {# Use url_for for the action #}
+    <div class="form-group">
+        <label for="message">Enter Message:</label>
+        <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+    </div>
+    <div class="form-group">
+        <label for="key">Secret Key (in hex):</label>
+        <input type="text" class="form-control" id="key" name="key" required placeholder="Paste or generate a 64-character hexadecimal key...">
+    </div>
+    <button type="submit" class="btn btn-primary">Encrypt Message</button>
+</form>
+
+<br>
+<button id="generateKeyBtn" class="btn btn-secondary">Generate Key</button>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function copyText(elementId) {
+    var text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text)
+        .then(() => { alert("Key copied to clipboard!"); })
+        .catch(err => { console.error('Copy failed:', err); alert("Failed to copy key: " + err); });
+}
+
+document.getElementById("generateKeyBtn").addEventListener("click", function(e) {
+    e.preventDefault(); // Prevent default button behavior
+    fetch("{{ url_for('generate_key_route') }}", { headers: {"X-Requested-With": "XMLHttpRequest"} }) {# Use url_for for the fetch URL #}
+    .then(response => {
+        if (!response.ok) {
+            // Handle HTTP errors
+            // Try to read the error message from the JSON response
+            return response.json().then(data => { throw new Error(data.error || `HTTP error! status: ${response.status}`); })
+                  .catch(() => { throw new Error(`HTTP error! status: ${response.status}`); }); // Handle case where response is not JSON
+        }
+        return response.json();
+    })
+    .then(data => {
+        document.getElementById("key").value = data.key;
+        document.getElementById("secretKeyDisplay").innerText = data.key;
+        document.getElementById("keyInfo").style.display = "block";
+        // Store the key in session storage
+        sessionStorage.setItem("secret_key", data.key);
+    })
+    .catch(error => {
+        alert("Error generating key: " + error.message);
+        console.error("Fetch error during key generation:", error);
+    });
+});
+
+// Add event listener for the navbar "Generate Key" link - only works when on the encrypt page
+// This listener needs to be *inside* this script block now
+document.getElementById("generateKeyNav").addEventListener("click", function(e) {
+     // Check if we are on the encrypt page (or the path starts with /encrypt) BEFORE preventing default
+    // Using startsWith because url_for might add a trailing slash depending on Flask config
+    if (window.location.pathname === '{{ url_for('encrypt_page') }}' || window.location.pathname === '{{ url_for('encrypt_page') }}/') {
+        e.preventDefault(); // Prevent default link behavior only if on the correct page
+        document.getElementById("generateKeyBtn").click(); // Trigger the button click
+    }
+    // If not on /encrypt, the link will perform its default action and navigate to /encrypt
+});
+
+
+// On page load, check if a key exists in session storage and populate the field
+window.onload = function() {
+    var sessionKey = sessionStorage.getItem("secret_key");
+    var keyInput = document.getElementById("key");
+    if (sessionKey && !keyInput.value) { // Only pre-fill if session key exists and field is empty
+        keyInput.value = sessionKey;
+        document.getElementById("secretKeyDisplay").innerText = sessionKey;
+        document.getElementById("keyInfo").style.display = "block";
+    }
+     // Optional: Remove session key after some time or on browser close for slightly better hygiene in a demo
+     // sessionStorage.removeItem("secret_key"); // Or do this when navigating away from crypto pages
+};
+
+</script>
+{% endblock %}
