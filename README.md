@@ -4,6 +4,7 @@ This project is a web-based implementation of a custom symmetric block cipher, t
 
 
 
+
 ## 🔑 Key Features
 
 -   **Custom Cipher Algorithm:** Implements a unique symmetric block cipher operating on 16-byte blocks with a 256-bit key.
