@@ -52,6 +52,8 @@ Follow these steps to set up and run the project on your local machine.
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/NoorMustafa4556/Serpent-Cipher-Flask-App-.git
+    ```
+    ```bash
     cd Serpent-Cipher-Flask-App-
     ```
 
