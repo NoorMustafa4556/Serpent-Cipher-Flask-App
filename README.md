@@ -85,6 +85,10 @@ Follow these steps to set up and run the project on your local machine.
     py app.py runserver
     ```
 
+    6.  **Open in your browser:**
+    Navigate to `http://127.0.0.1:5000` to access the application.
+
+
 # 👋 Hi, I'm Noor Mustafa
 
 A passionate and results-driven **Flutter Developer** from **Bahawalpur, Pakistan**, specializing in building elegant, scalable, and high-performance cross-platform mobile applications using **Flutter** and **Dart**.
@@ -189,10 +193,7 @@ With a strong understanding of **UI/UX principles**, **state management**, and *
 ---
 
 
-    python app.py 
-    ```
+  
 
-5.  **Open in your browser:**
-    Navigate to `http://127.0.0.1:5000` to access the application.
 
 ---
