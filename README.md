@@ -67,17 +67,18 @@ Follow these steps to set up and run the project on your local machine.
     venv\Scripts\activate
     ```
 
-    # For macOS/Linux
+    ## For macOS/Linux
+    ```bash
     python3 -m venv venv
     source venv/bin/activate
     ```
 
-3.  **Install the required packages:**
+4.  **Install the required packages:**
     ```bash
     pip install Flask
     ```
 
-4.  **Run the Flask application:**
+5.  **Run the Flask application:**
     ```bash
 
 # 👋 Hi, I'm Noor Mustafa
