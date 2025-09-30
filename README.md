@@ -70,6 +70,7 @@ Follow these steps to set up and run the project on your local machine.
     ## For macOS/Linux
     ```bash
     python3 -m venv venv
+    ```
     source venv/bin/activate
     ```
 
