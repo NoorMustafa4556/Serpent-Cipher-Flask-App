@@ -82,6 +82,8 @@ Follow these steps to set up and run the project on your local machine.
 
 5.  **Run the Flask application:**
     ```bash
+    py app.py runserver
+    ```
 
 # 👋 Hi, I'm Noor Mustafa
 
