@@ -58,10 +58,14 @@ Follow these steps to set up and run the project on your local machine.
     ```
 
 2.  **Create and activate a virtual environment (Recommended):**
+   
+    ## For Windows
     ```bash
-    # For Windows
     python -m venv venv
+    ```
+    ```bash
     venv\Scripts\activate
+    ```
 
     # For macOS/Linux
     python3 -m venv venv
